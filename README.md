@@ -13,13 +13,7 @@
 
 ## Table Of Contents
 
-* [About](#tte)
-* [Built With](#built-with)
-* [Installation](#installation)
-* [Usage](#usage)
-* [Options](#options)
-* [Examples](#examples)
-* [License](#license)
+* [Preamble](#preamble)
 
 
 ## PREAMBLE
