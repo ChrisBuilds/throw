@@ -1,6 +1,6 @@
 <br/>
 <p align="center">
-  <h2 align="center">Throw / Catch</h2>
+  <h1 align="center">Throw / Catch</h1>
   <p align="center">
     Exfilling Data over an 'AirGap' (sort of)
     <br/>
