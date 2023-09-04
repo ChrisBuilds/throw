@@ -11,6 +11,10 @@
 ## Table Of Contents
 
 * [Preamble](#preamble)
+* [Background](#background)
+* [Initial Efforts](#initial-efforts)
+* [Final Product](#final-product)
+* [Extras](#extra-implementation-details)
 
 
 ## Preamble
