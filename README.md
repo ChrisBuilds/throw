@@ -46,19 +46,19 @@ While it was possible to manually modify the 'map.py' script to create multiple 
 
 ## Catch / Throw Concept
 The methodology here is simple:
-1. Read an input file into a bytestream.
+1. Read an input file into a byte stream.
 2. Separate the input byte stream into three byte chunks.
 3. Create a visual grid using a tkinter canvas.
-5. Set the color in each grid cell to correspond to a three byte chunk from the bytestream. ASCII hex values would become RGB colors. The larger the grid, the more data represented in each cycle.
-6. Cycle the grid to progress through the bytestream.
+5. Set the color in each grid cell to correspond to a three byte chunk from the byte stream. ASCII hex values would become RGB colors. The larger the grid, the more data represented in each cycle.
+6. Cycle the grid to progress through the byte stream.
 7. Run a second program to detect the grid using PIL.
 8. Screenshot that grid
 9. Split it into individual cells
 10. Transcode the colors back to ASCII text.
 
-The program is divided into two distinct components: 'Throw' and 'Catch.' The 'Throw' segment operates within the virtual machine (VM), granting it access to the input file. Conversely, the 'Catch' component is designed to run on my local workstation. The purpose of 'Catch' is to receive information about the grid's location, enabling it to capture color data and subsequently perform the reverse transformation to recover the original ASCII text.
+The program is divided into two distinct components: Throw and Catch. The Throw component operates within the virtual machine (VM), granting it access to the input file. Conversely, the Catch component is designed to run on my local workstation. The purpose of Catch is to receive information about the grid's location, enabling it to capture color data and subsequently perform the reverse transformation to recover the original ASCII text.
 
-To allow for flexibility in adjusting the grid size to optimize data transfer rates, Catch is designed to detect and adapt to the grid's dimensions. This is accomplished by using a distinctive fill color for the cells during 'discovery mode.' Additionally, the color red is used to identify the left boundary of the grid, while the color green is used to identify the top boundary. By providing Catch the location of the top left cell (using the mouse cursor at the start of the process), along with the number of cells in a grid row and the number of pixels in a cell, Catch will identify the extent of the grid and calculate the coordinates of all grid cells. Using these coordinates, Catch screenshot the grid location on screen, split the image into individual cells, detect the color, and convert the color hex back into ASCII text.
+To allow for flexibility in adjusting the grid size to optimize data transfer rates, Catch is designed to detect and adapt to the grid's dimensions. This is accomplished by using a distinctive fill color for the cells during 'discovery mode.' Additionally, the color red is used to identify the left boundary of the grid, while the color green is used to identify the top boundary. By providing Catch the location of the top left cell (using the mouse cursor at the start of the process), along with the number of cells in a grid row, and the number of pixels in a cell, Catch will identify the extent of the grid and calculate the coordinates of all grid cells. Using these coordinates, Catch will screenshot the grid location on screen, split the image into individual cells, detect the color, and convert the color's hex representation back into ASCII text.
 
 Here's a visual example:
 
@@ -66,7 +66,7 @@ Here's a visual example:
 
 ## Final Product
 
-Excuse the low quality, these are captures from an older video I made to explain the process. The example text is "Smashing The Stack For Fun And Profit". 
+Excuse the low quality, these are captures from an older video I made to explain the process.
 
 #### Throw - Displaying the data as a grid of colors (9 cells per row, 60 pixels per cell)
 ```python2 throw_grid.py smashing.txt --grid 9 --square 60 --colortime 900 --synctime 500```
@@ -79,8 +79,8 @@ Excuse the low quality, these are captures from an older video I made to explain
 ![catch_output](https://github.com/ChrisBuilds/throw/assets/57874186/e3fc8192-ec86-49a5-8521-886977168e94)
 
 ## Extra Implementation Details
-* The black screen shown between each grid of colors is actually two alternating shades of black that are used to help synchronize the catch program. If catch sees the same shade twice, it knows it missed a cycle.
+* The black screen shown between each grid of colors is actually two alternating shades of black that are used to help synchronize the catch program. If catch sees the same shade twice, it knows it missed a cycle. If Catch captures multiple frames without a syncronization frame, it treats those frames as representing the same data.
 * Each cell in the grid was still experiencing compression artifacts. However, by examining every pixel in the cell, the most common color ended up being the correct color. Each cell often contained over 400 slight variations of the intended color.
 * Catch takes screenshots as fast as the system will process. This allows it to take many captures of the same data. The synchronization colors mentioned above help prevent duplicate data. Additionally, video compression tends to produce a higher quality image when the data doesn't change between frames. Often the third or fourth frame of a given grid cycle will have the most accurate color representation. Catch will look at all frames between synchronization frames and average the colors to find the most likely correct color.
-* The data was hashed on both side to allow for comparisons.
-* Any missed cycles (detected using the sync colors) were marked in the data and a note was provided after the transfer to allow for manual review.
+* The data is hashed on both side to allow for comparisons.
+* Any missed cycles (detected using the sync colors) are marked in the data and a note is provided after the transfer to allow for manual review.
