@@ -27,7 +27,7 @@ In 2019 I participated in an educational program that relied on virtual machines
 
 ## Initial Efforts
 #### OCR
-Yeah, I tried OCR, however, due to the image quality of the video and the nature of the notes (many symbols and precise syntax including whitespace) this approach was unsuccessful. OCR dropped most of the whitespace and frequently missed or confused symbols.
+The first approach was to employ OCR, however due to the image quality of the video and the nature of the notes (many symbols and precise syntax including whitespace) this approach was unsuccessful. OCR dropped most of the whitespace and frequently missed or confused symbols.
 
 #### Bitmap
 Another approach involved generating a bitmap representation from the contents of the file in question. This method treated the input file as a byte stream, with every triplet of bytes translated into a hexadecimal RGB color code. These color codes were then integrated to form a bitmap image. The intention behind this approach was to capture the generated image on my local workstation, allowing for the reversal of this process to retrieve the original text.
