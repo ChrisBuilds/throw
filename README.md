@@ -34,7 +34,7 @@ My second approach was to write a script to generate a bitmap from the file cont
 
 <img src="https://github.com/ChrisBuilds/throw/assets/57874186/e4427695-eed0-4959-87cd-edf3a476c2ab" alt="TTE" width="240" height="240">
 
-Testing locally, this works as expected. However, when used from the VM, the video compression changes the color values and the original data is lost. Given video compression doesn't do well with high frequency data, my next approach was to lower the frequency. Rather than load all of the data into a single bitmap, I can load it in smaller sections into a bitmap with larger color squares. Now, I could modify the map.py script to create a bunch of bitmaps and manually capture and process that image data locally, but that's not fun or cool, so I automated the process using PIL and tkinter. 
+Testing locally, this works as expected. However, when used from the VM, the video compression changes the color values and the original data is lost. Given video compression doesn't do well with high frequency data, my next approach was to lower the frequency. Rather than load all of the data into a single bitmap, I can load smaller sections into a bitmap with larger color squares. Now, I could modify the map.py script to create a bunch of bitmaps and manually capture and process that image data locally, but that's not fun or cool, so I automated the process using PIL and tkinter. 
 
 ## Catch / Throw Concept
 The methodology here is simple:
