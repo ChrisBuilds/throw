@@ -27,7 +27,7 @@ In 2019/2020, I attended a course which utilized virtual machines accessible thr
 
 ## Initial Efforts
 #### OCR
-Yeah, I tried OCR, due to the image quality of the video and the nature of the notes (many symbols and precise syntax including whitespace) this approach as a failure. OCR dropped most of the whitespace and frequently missed or confused symbols.
+Yeah, I tried OCR, due to the image quality of the video and the nature of the notes (many symbols and precise syntax including whitespace) this approach was unsuccessful. OCR dropped most of the whitespace and frequently missed or confused symbols.
 
 #### Bitmap
 My second approach was to write a script to generate a bitmap from the file contents. By reading the input file as a bytestream, converting every three bytes into a RGB hex color, and packing them into a bitmap, I could potentially screengrab the image on my local workstation and reverse the process to get my text. I looked up the file structure of a bitmap and wrote a quick Python script to generate a bitmap from arbitrary data, padded out to a square. Here's an example image made using the map.py script found in this repo, run against itself.
