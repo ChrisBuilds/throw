@@ -27,7 +27,7 @@ In 2019/2020, I attended a course which utilized virtual machines accessible thr
 
 ## Initial Efforts
 #### OCR
-Yeah, I tried OCR, due to the image quality of the video and the nature of the notes (many symbols and precise syntax including whitespace) this approach was unsuccessful. OCR dropped most of the whitespace and frequently missed or confused symbols.
+Yeah, I tried OCR, however, due to the image quality of the video and the nature of the notes (many symbols and precise syntax including whitespace) this approach was unsuccessful. OCR dropped most of the whitespace and frequently missed or confused symbols.
 
 #### Bitmap
 My second approach was to write a script to generate a bitmap from the file contents. By reading the input file as a bytestream, converting every three bytes into a RGB hex color, and packing them into a bitmap, I could potentially screengrab the image on my local workstation and reverse the process to get my text. I looked up the file structure of a bitmap and wrote a quick Python script to generate a bitmap from arbitrary data, padded out to a square. Here's an example image made using the map.py script found in this repo, run against itself.
@@ -63,7 +63,7 @@ Here's how it looks in action. Excuse the low quality, these are captures from a
 ![catch_output](https://github.com/ChrisBuilds/throw/assets/57874186/e3fc8192-ec86-49a5-8521-886977168e94)
 
 ## Extra Implementation Details
-* The black screen shown between each grid of colors is actually an alternating 'blackish' color that is used to help syncronize the catch program. There are two different shades of black used. If catch sees the same shade twice, it knows it missed a cycle.
+* The black screen shown between each grid of colors is actually an alternating 'blackish' color that is used to help synchronize the catch program. There are two different shades of black used. If catch sees the same shade twice, it knows it missed a cycle.
 * Each cell in the grid was still experiencing compression artifacts. However, by examining every pixel in the cell, the most common color ended up being the correct color. Each cell often contained over 400 slight variations of the intended color.
 * The data was hashed on both side to allow for comparisons.
-* Any missed cycles (detected using the sync colors) was marked in the data and a note was provided in after the transfer to allow for manual review.
+* Any missed cycles (detected using the sync colors) were marked in the data and a note was provided in after the transfer to allow for manual review.
